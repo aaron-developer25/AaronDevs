@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    
+    <section>
+        <h4>CONSULTA RNC CONTRIBUYENTES DE LA DGII</h4>
+        <div>
+            <label>RNC/Cedula:</label>
+            <input id="rnc" type="number" placeholder="Digite su RNC/CEDULA">
+            <button onclick="buscarConstribuyentes()">Buscar</button>
+        </div>
+        <div>
+            <label>Razon Social: </label>
+            <span id="razonsocial"></span>
+        </div>
+        <div>
+            <label>Empresa: </label>
+            <span id="empresa"></span>
+        </div>
+    </section>
+
+
+    <script>
+
+        function buscarConstribuyentes(){
+            var rnc = document.getElementById("rnc").value;
+
+            getContribuyentes(rnc, function(empresa) {
+                if(empresa != null){
+                    document.getElementById("razonsocial").textContent = empresa.nombreRazonSocial;
+                    document.getElementById("empresa").textContent = empresa.nombreComercial;
+                } else {
+                    document.getElementById("razonsocial").textContent = "NO ENCONTRADO";
+                    document.getElementById("empresa").textContent = "NO ENCONTRADO";
+                }
+            });      
+        }
+
+    </script>
+
+    <script src="../DGII.js"></script>
+</body>
+</html>

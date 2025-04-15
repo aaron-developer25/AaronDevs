@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    
+    <section>
+        <h4>CONSULTA PERSONA POR SU CEDULA</h4>
+        <div>
+            <label>Cedula:</label>
+            <input id="cedula" type="number" placeholder="Digite su cedula">
+            <button onclick="buscarPersonaCedula()">Buscar</button>
+        </div>
+        <div>
+            <label>Nombre: </label>
+            <span id="nombrecompleto"></span>
+        </div>
+    </section>
+
+    <script>
+        function buscarPersonaCedula(){
+            var cedula = document.getElementById("cedula").value;
+
+            getPersonaCedula(cedula, function(persona) {
+                if(persona != null){
+                    document.getElementById("nombrecompleto").textContent = persona.Nombre + " " + persona.Apellidos;
+                } else {
+                    document.getElementById("nombrecompleto").textContent = "Cédula no encontrada";
+                }
+            });      
+        }
+
+    </script>
+
+    <script src="../JCE.js"></script>
+</body>
+</html>
